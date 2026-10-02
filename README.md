@@ -95,5 +95,5 @@ Este repositório contém o código-fonte e acompanha a evolução do projeto du
 
 Estudante de Análise e Desenvolvimento de Sistemas, com foco atual em desenvolvimento Front-End.
 
-- LinkedIn: [Seu perfil](https://www.linkedin.com/in/joaovbslima/)
-- GitHub: [Seu GitHub](https://github.com/joaovbslima/)
+- LinkedIn: [João Victor Lima](https://www.linkedin.com/in/joaovbslima/)
+- GitHub: [joaovbslima](https://github.com/joaovbslima/)
