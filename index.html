@@ -11,22 +11,24 @@
 <body>
     <header class="header">
         <div class="logo">
-            <img src="imagens/logo-cinewave-branco.png" alt="CineWave">
+            <a href="index.html">
+                <img src="imagens/logo-cinewave-branco.png" alt="CineWave">
+            </a>
         </div>
         
         <nav class="menu">
-            <a class="item-menu" href="index.html">Início</a>
+            <a class="item-menu" href="index.html" aria-current="page">Início</a>
             <a class="item-menu" href="filmes.html">Filmes</a>
             <a class="item-menu" href="series.html">Séries</a>
             <a class="item-menu" href="lancamentos.html">Lançamentos</a>
-            <a class="item-menu" href="minha-lista.html">Minha lista</a>
+            <!-- <a class="item-menu" href="minha-lista.html">Minha lista</a> -->
         </nav>
         <div class="actions">
             <div class="busca">
-                <input id="pesquisa" type="text" placeholder="Buscar Título">
-                <a id="link-login" href="login.html">Login</a>
+                <input id="pesquisa" type="search" placeholder="Buscar Título" aria-label="Buscar filmes e séries">
             </div>
 
+            <a id="link-login" href="login.html">Login</a>
         </div>
 
     </header>

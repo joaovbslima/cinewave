@@ -14,20 +14,26 @@ body{
     font-family: 'Manrope', sans-serif;
 }
 
+.header{
+    background-color: #080B12;
+    min-height: 64px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 40px;
+    padding: 0 48px;
+}
+
 .logo img {
     display: block;
     width: 160px;
     height: auto;
 }
 
-.header{
-    background-color: #080B12;
-    height: 64px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 40px;
-    padding: 0 48px;
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 a {
@@ -38,11 +44,69 @@ a {
 .item-menu{
     padding-right: 5px;
     padding-left: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #858c9b;
+}
+.item-menu:hover{
+    color: #FFFFFF;
+    transition: color 0.2s ease;
+}
+
+.item-menu[aria-current="page"]{
+    color: #FFFFFF;
+}
+
+.item-menu:focus-visible{
+    outline: none;
+    color: #FFFFFF;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#pesquisa{
+    width: 200px;
+    padding: 10px 12px;
+    background-color: #141a26;
+    border: 1px solid #293142;
+    border-radius: 20px;
+    font: inherit;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+
+#pesquisa::placeholder{
+    color: #858c9b;
+}
+#pesquisa:focus{
+    border-color: #FFFFFF;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
 
 #link-login{
-    padding-right: 5px;
-    padding-left: 5px;
+    display: block;
+    padding: 10px 16px;
+    background-color: #FFFFFF;
+    color: #080B12;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+}
+#link-login:hover{
+    background-color: #dce1e8;
+    transition: background-color 0.2s ease;
+}
+#link-login:focus-visible{
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 main{
@@ -131,4 +195,42 @@ footer{
     width: 100%;
     background-color: #273142;
     color:#808080;
+}
+
+@media (max-width: 1100px){
+    .header{
+        grid-template-columns: 1fr auto;
+        gap: 16px 24px;
+        padding: 16px 24px;
+    }
+    .menu{
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 700px){
+    .header {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
+    }
+    .logo{
+        justify-self: center;
+    }
+    .menu{
+        grid-column: 1 / -1;
+        grid-row: auto;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+    .busca{
+        flex: 1;
+        min-width: 0;
+    }
+    #pesquisa{
+        width: 100%;
+    }
+    #link-login{
+        flex-shrink: 0;
+    }
 }
