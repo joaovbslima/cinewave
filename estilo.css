@@ -115,11 +115,18 @@ main{
     flex-grow: 1; 
 }
 
+.catalogo{
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 40px 48px;
+}
+
+
+
 .sub-title{
     margin-bottom: 24px;
 }
 .sub-title h2{
-    /* padding: 5px; */
     font-size: 24px;
     font-weight: 700;
     line-height: 1.2;
@@ -143,8 +150,6 @@ hr {
 
 
 .container{
-    margin-left: 5px;
-    margin-right: 5px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 40px;
