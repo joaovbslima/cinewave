@@ -111,7 +111,8 @@ a {
 }
 
 main{
-    background-color: #080B12;    
+    background-color: #080B12;   
+    flex-grow: 1; 
 }
 
 .sub-title{
