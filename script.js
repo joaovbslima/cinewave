@@ -43,7 +43,7 @@ class Filme {
     this.nota = nota;
     this.generos = generos;
     this.poster = poster;
-    this.baner = baner;
+    this.backdrop = baner;
   }
 
 
@@ -127,7 +127,7 @@ const filmes = [
     2026,
     106,
     18,
-    "s/n",
+    null,
     ["Terror", "Thriller", "Ficção científica"],
     "https://image.tmdb.org/t/p/w600_and_h900_face/dqvHs2YXks989ScXvsngbqAeBHX.jpg",
     "imagens/cara-de-barro.jpeg"
@@ -147,21 +147,33 @@ let listaDeFilmes = '';
 
 // Para cada filme (instancia da classe Filme) no array filmes, incremento a listaDeFilmes com o código HTML para criar o respectivo card
 filmes.forEach(filme => {
+  if (filme.nota === null){
+    filme.nota = "N/A";
+  }
+  // Criação de cada carde utilizando DOM
+  const divCol = document.createElement('div');
+  const divPoster = document.createElement('div');
+  const imgPoster = document.createElement('img');
+  const spanNota = document.createElement('span');
+  const tituloH3 = document.createElement('h3');
+  const pGeneros = document.createElement('p');
   
-  listaDeFilmes += `
-  <div class="col-fr-1">
-      <div class="poster">
-          <img src="${filme.poster}" alt="${filme.titulo}">
-          <span class="rating">★ ${filme.nota}</span>
-      </div>
-      <h3>
-          ${filme.titulo}
-      </h3>
-      <p>
-          ${filme.generos.join(' • ')}
-      </p>
-  </div>
-  `;
+  divCol.classList.add('col-fr-1');
+  divPoster.classList.add('poster');
+  imgPoster.setAttribute('src', filme.poster);
+  imgPoster.setAttribute('alt', filme.titulo);
+  spanNota.classList.add('rating');
+  spanNota.textContent = `★ ${filme.nota}`;
+  tituloH3.textContent = filme.titulo;
+  pGeneros.textContent = filme.generos.join(' • ');
+
+  cards.appendChild(divCol);
+  divCol.appendChild(divPoster);
+  divPoster.appendChild(imgPoster);
+  divPoster.appendChild(spanNota);
+  divCol.append(tituloH3,pGeneros);
+// ----------------
+  
 });
 
 
