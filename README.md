@@ -10,17 +10,27 @@ Plataforma web de catálogo de filmes e séries desenvolvida como projeto acadê
 
 O CineWave surgiu inicialmente como um trabalho acadêmico de tema livre na graduação em Análise e Desenvolvimento de Sistemas.
 
-A partir da proposta inicial, decidi continuar desenvolvendo o projeto além da entrega acadêmica, utilizando-o como ambiente de estudo e prática para aprofundar meus conhecimentos em desenvolvimento web.
+A partir da proposta inicial, o projeto passou a ser desenvolvido também como ambiente de estudo e prática, acompanhando minha evolução em desenvolvimento web.
 
-A ideia é aumentar gradualmente a complexidade da aplicação conforme avanço nos estudos e incorporo novos conceitos e tecnologias.
+A aplicação está sendo construída de forma incremental, começando pelos fundamentos de HTML, CSS e JavaScript e aumentando gradualmente sua complexidade conforme novos conceitos e tecnologias são incorporados.
 
 ---
 
 ## Objetivo
 
-O principal objetivo do CineWave é consolidar conhecimentos de desenvolvimento web por meio de um projeto prático, trabalhando inicialmente os fundamentos de front-end e evoluindo posteriormente para recursos mais complexos.
+O principal objetivo do CineWave é consolidar conhecimentos de desenvolvimento web por meio de um projeto prático e evolutivo.
 
-Neste momento, o foco está na construção da interface, organização das páginas e estruturação visual da aplicação.
+Além da construção da interface, o projeto busca explorar conceitos como:
+
+- estruturação semântica com HTML;
+- layouts responsivos com CSS;
+- manipulação do DOM;
+- orientação a objetos com JavaScript;
+- geração dinâmica de conteúdo;
+- consumo de APIs;
+- integração entre front-end e back-end.
+
+A proposta é desenvolver cada funcionalidade compreendendo sua implementação, evitando o uso de frameworks nesta etapa do projeto.
 
 ---
 
@@ -30,48 +40,129 @@ Atualmente:
 
 - HTML5
 - CSS3
+- JavaScript
 - Git
 - GitHub
 - GitHub Pages
 
-Em estudo e implementação futura:
+Planejadas para etapas futuras:
 
-- JavaScript
+- API do TMDB
 - PHP
 - Banco de dados
-- Integração com API
 
 ---
 
 ## Funcionalidades atuais
 
-- Estrutura inicial das páginas
-- Header e navegação
-- Seção de cards de filmes e séries
-- Layout utilizando CSS Grid
-- Uso de Flexbox em componentes da interface
-- Estilização responsiva em desenvolvimento
+- Header com navegação, campo de busca e acesso de login
+- Hero/slideshow de destaques
+- Controles de navegação do slideshow
+- Layout responsivo em desenvolvimento
+- Catálogo de filmes utilizando CSS Grid
+- Cards com pôster, avaliação, título e gêneros
+- Modelagem de filmes utilizando classe JavaScript
+- Armazenamento dos filmes em objetos e arrays
+- Criação dinâmica dos cards utilizando manipulação do DOM
+- Ordenação dos filmes por data de lançamento
+- Ordenação dos filmes por avaliação
+- Tratamento de dados ausentes na interface
+- Função reutilizável para renderização dos cards
+- Uso de Flexbox e Grid em diferentes componentes da interface
 
 ---
 
-## Funcionalidades planejadas
+## Estrutura atual da aplicação
 
-- Slider de destaques
-- Consumo de dados da API do TMDB
-- Exibição dinâmica de filmes e séries
-- Página de detalhes
-- Busca de conteúdos
-- Recursos desenvolvidos com JavaScript
-- Implementação de back-end com PHP
-- Integração com banco de dados
+A página inicial já possui sua estrutura visual principal composta por:
+
+- Header
+- Hero/slideshow
+- Seção de lançamentos recentes
+- Seção de filmes mais bem avaliados
+- Footer
+
+Os conteúdos dos catálogos são gerados dinamicamente pelo JavaScript a partir dos objetos que representam os filmes.
+
+Atualmente, os dados ainda são definidos localmente no código. Em uma etapa futura, essa origem será substituída por dados obtidos através da API do TMDB.
+
+---
+
+## JavaScript
+
+O projeto já utiliza JavaScript tanto para interação quanto para geração de conteúdo.
+
+Entre os conceitos atualmente aplicados estão:
+
+- classes e objetos;
+- arrays;
+- métodos de arrays;
+- funções;
+- estruturas condicionais;
+- manipulação do DOM;
+- criação dinâmica de elementos HTML;
+- alteração de atributos e conteúdo;
+- ordenação de dados;
+- reutilização de funções;
+- controle do slideshow.
+
+A implementação continuará sendo expandida conforme novos conceitos forem estudados.
+
+---
+
+## Próximas funcionalidades
+
+Entre as próximas etapas planejadas estão:
+
+- integração com a API do TMDB;
+- substituição dos dados locais por dados reais da API;
+- geração dinâmica do conteúdo do hero/slideshow;
+- desenvolvimento das páginas de Filmes, Séries e Lançamentos;
+- busca de filmes e séries;
+- página de detalhes de cada título;
+- melhoria da responsividade;
+- implementação das ações de trailer e lista pessoal;
+- desenvolvimento do back-end com PHP;
+- possível integração com banco de dados após a conclusão das funcionalidades principais.
+
+---
+
+## Integração com TMDB
+
+A API do TMDB será utilizada como principal fonte de dados de filmes e séries do CineWave.
+
+A integração deverá permitir carregar dinamicamente informações como:
+
+- títulos;
+- sinopses;
+- datas de lançamento;
+- avaliações;
+- gêneros;
+- pôsteres;
+- imagens de backdrop.
+
+A primeira integração será desenvolvida com JavaScript. Posteriormente, com a introdução do PHP no projeto, a arquitetura poderá ser evoluída para utilizar o back-end como intermediário na comunicação com a API.
 
 ---
 
 ## Status do projeto
 
-O projeto está em desenvolvimento contínuo.
+O CineWave está em desenvolvimento contínuo.
 
-Novas funcionalidades e melhorias são adicionadas conforme avanço nos estudos e na implementação dos conteúdos trabalhados na graduação.
+### Etapa atual
+
+- ✅ Estrutura principal da Home
+- ✅ Header e footer
+- ✅ Hero/slideshow funcional
+- ✅ Modelagem dos filmes em JavaScript
+- ✅ Cards gerados dinamicamente pelo DOM
+- ✅ Ordenação dos catálogos por critérios diferentes
+- 🔄 Responsividade em refinamento
+- 🔜 Integração com TMDB
+- 🔜 Desenvolvimento das demais páginas
+- 🔜 PHP e processamento no servidor
+
+Novas funcionalidades são adicionadas conforme avanço nos estudos e na implementação dos conteúdos trabalhados na graduação.
 
 ---
 
@@ -85,7 +176,9 @@ Versão publicada com GitHub Pages:
 
 ## Repositório
 
-Este repositório contém o código-fonte e acompanha a evolução do projeto durante o desenvolvimento.
+Este repositório contém o código-fonte do CineWave e acompanha a evolução do projeto durante seu desenvolvimento.
+
+O histórico de commits também registra a evolução gradual da aplicação e a implementação de novas funcionalidades.
 
 ---
 
@@ -93,7 +186,7 @@ Este repositório contém o código-fonte e acompanha a evolução do projeto du
 
 **João Victor Lima**
 
-Estudante de Análise e Desenvolvimento de Sistemas, com foco atual em desenvolvimento Front-End.
+Estudante de Análise e Desenvolvimento de Sistemas, atualmente aprofundando conhecimentos em desenvolvimento de software, com foco prático em front-end e JavaScript.
 
 - LinkedIn: [João Victor Lima](https://www.linkedin.com/in/joaovbslima/)
 - GitHub: [joaovbslima](https://github.com/joaovbslima/)
