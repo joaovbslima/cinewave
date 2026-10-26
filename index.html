@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <title>CineWave</title>
 
 </head>
+
 <body>
     <header class="header">
         <div class="logo">
@@ -16,7 +18,7 @@
                 <img src="imagens/logo-cinewave-branco.png" alt="CineWave">
             </a>
         </div>
-        
+
         <nav class="menu">
             <a class="item-menu" href="index.html" aria-current="page">Início</a>
             <a class="item-menu" href="filmes.html">Filmes</a>
@@ -33,93 +35,24 @@
         </div>
 
     </header>
-    
+
     <main>
         <div class="slideshow">
-            <div class="slideshow-item">
-                <img src="imagens/homem-aranha.jpeg" alt="Homem-Aranha: Um Novo Dia">
-                <div class="texto-slideshow">
-                    <span class="badge-slide">ESTREIA DA SEMANA</span>
+            <!-- Preenchido via JavaScript -->
 
-                    <h1 class="titulo-slideshow">Homem-Aranha: Um Novo Dia</h1>
+            <button class="anterior" type="button" onclick="plusSlides(-1)"
+                aria-label="Slide anterior">&#10094;</button>
+            <button class="proximo" type="button" onclick="plusSlides(1)" aria-label="Próximo slide">&#10095;</button>
 
-                    <div class="meta-slideshow">
-                        <span>2026</span>
-                        <span>2h 23min</span>
-                        <span>12</span>
-                        <span>Ficção científica • Ação • Aventura</span>
-                    </div>
+            <div class="slideshow-dots">
+                <button class="dot" type="button" onclick="currentSlide(1)" aria-label="Ir para o slide 1"></button>
 
-                    <p class="sinopse-slideshow">
-                        É um novo dia para Peter Parker. Combatendo o crime em tempo integral como Homem-Aranha em um mundo que não se lembra mais dele e lidando com a pressão de ver seus antigos amigos seguirem em frente sem sua presença, Peter passa por uma mudança que talvez nem ele tenha o poder de controlar. Mas essa transformação também pode ser a única coisa capaz de deter uma surpreendente nova ameaça à cidade e às pessoas que ele ama: um poderoso vilão que ninguém sequer consegue enxergar.
-                    </p>
+                <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Ir para o slide 2"></button>
 
-                    <div class="acoes-slideshow">
-                        <a href="#" class="botao-slide botao-primario">Assistir trailer</a>
-                        <a href="#" class="botao-slide botao-secundario">+ Minha lista</a>
-                    </div>
-                </div>
+                <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Ir para o slide 3"></button>
+
             </div>
-            <div class="slideshow-item">
-                <img src="imagens/resident-evil.jpg" alt="Resident Evil">
-                <div class="texto-slideshow">
-                    <span class="badge-slide">ESTREIA DA SEMANA</span>
 
-                    <h1 class="titulo-slideshow">Resident Evil</h1>
-
-                    <div class="meta-slideshow">
-                        <span>2026</span>
-                        <span>1h 30min</span>
-                        <span>18</span>
-                        <span>Terror • Ficção científica • Aventura</span>
-                    </div>
-
-                    <p class="sinopse-slideshow">
-                        Bryan, um tranquilo entregador de órgãos, é enviado para uma entrega noturna no Hospital Geral de Raccoon City. No caminho por uma estrada montanhosa coberta de neve, ele acidentalmente atropela uma mulher desconhecida. Ela sobrevive, mas algo está muito errado. Ao tentar ajudar, Bryan se depara com um surto em larga escala envolvendo mutações horríveis com tentáculos e monstruosidades bioengenheiradas.
-                    </p>
-
-                    <div class="acoes-slideshow">
-                        <a href="#" class="botao-slide botao-primario">Assistir trailer</a>
-                        <a href="#" class="botao-slide botao-secundario">+ Minha lista</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slideshow-item">
-                <img src="imagens/a-odisseia.jpg" alt="A Odisseia">
-                <div class="texto-slideshow">
-                    <span class="badge-slide">ESTREIA DA SEMANA</span>
-
-                    <h1 class="titulo-slideshow">A Odisseia</h1>
-
-                    <div class="meta-slideshow">
-                        <span>2026</span>
-                        <span>2h 52min</span>
-                        <span>12</span>
-                        <span>Ação • Aventura • Fantasia</span>
-                    </div>
-
-                    <p class="sinopse-slideshow">
-                        Acompanhe o rei grego Odisseu em sua perigosa jornada de 20 anos para voltar a Ítaca após a Guerra de Troia, enfrentando monstros e deuses enquanto sua esposa Penélope resiste em seu reino.
-                    </p>
-
-                    <div class="acoes-slideshow">
-                        <a href="#" class="botao-slide botao-primario">Assistir trailer</a>
-                        <a href="#" class="botao-slide botao-secundario">+ Minha lista</a>
-                    </div>
-                </div>
-            </div>
-                <button class="anterior" type="button" onclick="plusSlides(-1)" aria-label="Slide anterior">&#10094;</button>
-                <button class="proximo" type="button" onclick="plusSlides(1)" aria-label="Próximo slide">&#10095;</button>
-                                
-                <div class="slideshow-dots">
-                    <button class="dot" type="button" onclick="currentSlide(1)" aria-label="Ir para o slide 1"></button>
-                    
-                    <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Ir para o slide 2"></button>
-                    
-                    <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Ir para o slide 3"></button>       
-                    
-                </div>
-        
         </div>
 
         <div class="catalogo">
@@ -130,7 +63,7 @@
 
             <div class="container-news">
                 <!-- Preenchido via JavaScript -->
-                
+
             </div>
 
             <hr />
@@ -162,4 +95,5 @@
         </nav>
     </footer>
 </body>
+
 </html>

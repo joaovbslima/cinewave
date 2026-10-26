@@ -1,34 +1,79 @@
 
-// configuração do slideshow
+function criarSlideshow() {
 
-let slideIndex = 1;
-showSlides(slideIndex);
+  // Criação do hero/slideshow de forma dinâmica
+  const slideshow = document.querySelector('.slideshow');
+  // criação de cada item do slideshow
+  filmes.slice(0, 3).forEach(filme => {
+    const slideshowItem = document.createElement('div');
+    slideshowItem.classList.add('slideshow-item');
+    slideshow.appendChild(slideshowItem);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+    const imgSlide = document.createElement('img');
+    imgSlide.setAttribute('src', filme.backdrop);
+    imgSlide.setAttribute('alt', filme.titulo);
+    slideshowItem.appendChild(imgSlide);
+
+    const textoSlideshow = document.createElement('div');
+    textoSlideshow.classList.add('texto-slideshow');
+    slideshowItem.appendChild(textoSlideshow);
+
+    const badgeSlide = document.createElement('span');
+    badgeSlide.classList.add('badge-slide');
+    badgeSlide.textContent = 'ESTREIA DA SEMANA';
+    textoSlideshow.appendChild(badgeSlide);
+
+    const tituloSlide = document.createElement('h1');
+    tituloSlide.classList.add('titulo-slideshow');
+    tituloSlide.textContent = filme.titulo;
+    textoSlideshow.appendChild(tituloSlide);
+
+    const metaSlide = document.createElement('div');
+    metaSlide.classList.add('meta-slideshow');
+    textoSlideshow.appendChild(metaSlide);
+
+    const spanLancamento = document.createElement('span');
+    spanLancamento.textContent = filme.lancamento.toLocaleDateString('pt-BR');
+    metaSlide.appendChild(spanLancamento);
+
+    const spanDuracao = document.createElement('span');
+    spanDuracao.textContent = formatarHora(filme.duracao);
+    metaSlide.appendChild(spanDuracao);
+
+    const spanClassificacao = document.createElement('span');
+    spanClassificacao.textContent = filme.classificacaoIndicativa;
+    metaSlide.appendChild(spanClassificacao);
+
+    const spanGenero = document.createElement('span');
+    spanGenero.textContent = filme.generos.join(' • ');
+    metaSlide.appendChild(spanGenero);
+
+    const sinopseSlide = document.createElement('p');
+    sinopseSlide.classList.add('sinopse-slideshow');
+    sinopseSlide.textContent = filme.sinopse;
+    textoSlideshow.appendChild(sinopseSlide);
+
+    const acoesSlide = document.createElement('div');
+    acoesSlide.classList.add('acoes-slideshow');
+    textoSlideshow.appendChild(acoesSlide);
+
+    const botaoSlidePrimario = document.createElement('a');
+    botaoSlidePrimario.classList.add('botao-slide');
+    botaoSlidePrimario.classList.add('botao-primario');
+    botaoSlidePrimario.textContent = 'Assistir trailer';
+    acoesSlide.appendChild(botaoSlidePrimario);
+
+    const botaoSlideSecundario = document.createElement('a');
+    botaoSlideSecundario.classList.add('botao-slide');
+    botaoSlideSecundario.classList.add('botao-secundario');
+    botaoSlideSecundario.textContent = '+ Minha lista';
+    acoesSlide.appendChild(botaoSlideSecundario);
+
+  });
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName('slideshow-item');
-  let dots = document.getElementsByClassName('dot');
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = 'none';
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(' active', '');
-  }
-  slides[slideIndex - 1].style.display = 'block';
-  dots[slideIndex - 1].className += ' active';
-}
 
-// **************
 
 
 // Criando a classe Filme
@@ -58,8 +103,47 @@ class Filme {
 
 }
 
+
 // Instanciando os objetos da classe Filme
 const filmes = [
+
+  new Filme(
+    'Cara-de-Barro',
+    'A ascensão meteórica de Matt Hagen de garoto das ruas de Gotham a astro de Hollywood é tragicamente interrompida quando as ações de um chefão do crime local o deixam terrivelmente desfigurado. Abandonado por sua equipe e sem nada, Matt busca um tratamento de ponta que, milagrosamente, o devolve à sua antiga forma... mas que também afeta, de maneira inesperada, sua percepção da realidade, lançando-o em uma espiral destrutiva de obsessão e vingança.',
+    '2026-10-22',
+    106,
+    18,
+    7.5,
+    ['Terror', 'Thriller', 'Ficção científica'],
+    'https://image.tmdb.org/t/p/w600_and_h900_face/dqvHs2YXks989ScXvsngbqAeBHX.jpg',
+    'imagens/cara-de-barro.jpeg'
+  ),
+
+  new Filme(
+    'Street Fighter',
+    'Ambientado em 1993, os lutadores Ryu e Ken Masters são colocados de volta no combate quando a misteriosa Chun-Li os recruta para o próximo World Warrior Tournament: uma brutal briga de socos, destino e fúria. Entretanto, por trás desse campeonato, se esconde uma conspiração mortal que os força a encarar um ao outro e os demônios do passado. E se eles não fizerem, é game over!',
+    '2026-10-15',
+    119,
+    14,
+    6.2,
+    ['Ação', 'Fantasia'],
+    'https://image.tmdb.org/t/p/w600_and_h900_face/6gWmrC2GyDbUM1ET5EBg9lxBi7S.jpg',
+    'imagens/street-fighter.jpg'
+  ),
+
+
+  new Filme(
+    'Digger',
+    'O homem mais poderoso do mundo embarca em uma missão frenética para provar que é o salvador da humanidade, antes que o desastre desencadeado por ele destrua tudo.',
+    '2026-10-01',
+    129,
+    14,
+    7.5,
+    ['Comédia', 'Drama'],
+    'https://image.tmdb.org/t/p/w600_and_h900_face/2qelG58fO3tOSPrDVzOW8hfxY3V.jpg',
+    'imagens/digger.jpg'
+  ),
+
   new Filme(
     'Homem-Aranha: Um novo dia',
     'É um novo dia para Peter Parker. Combatendo o crime em tempo integral como Homem-Aranha em um mundo que não se lembra mais dele e lidando com a pressão de ver seus antigos amigos seguirem em frente sem sua presença, Peter passa por uma mudança que talvez nem ele tenha o poder de controlar. Mas essa transformação também pode ser a única coisa capaz de deter uma surpreendente nova ameaça à cidade e às pessoas que ele ama: um poderoso vilão que ninguém sequer consegue enxergar.',
@@ -97,63 +181,67 @@ const filmes = [
     'imagens/a-odisseia.jpg'
   ),
 
-  new Filme(
-    'Digger',
-    'O homem mais poderoso do mundo embarca em uma missão frenética para provar que é o salvador da humanidade, antes que o desastre desencadeado por ele destrua tudo.',
-    '2026-10-01',
-    129,
-    14,
-    7.5,
-    ['Comédia', 'Drama'],
-    'https://image.tmdb.org/t/p/w600_and_h900_face/2qelG58fO3tOSPrDVzOW8hfxY3V.jpg',
-    'imagens/digger.jpg'
-  ),
-
-  new Filme(
-    'Street Fighter',
-    'Ambientado em 1993, os lutadores Ryu e Ken Masters são colocados de volta no combate quando a misteriosa Chun-Li os recruta para o próximo World Warrior Tournament: uma brutal briga de socos, destino e fúria. Entretanto, por trás desse campeonato, se esconde uma conspiração mortal que os força a encarar um ao outro e os demônios do passado. E se eles não fizerem, é game over!',
-    '2026-10-15',
-    119,
-    14,
-    6.2,
-    ['Ação', 'Fantasia'],
-    'https://image.tmdb.org/t/p/w600_and_h900_face/6gWmrC2GyDbUM1ET5EBg9lxBi7S.jpg',
-    'imagens/street-fighter.jpg'
-  ),
-
-  new Filme(
-    'Cara-de-Barro',
-    'A ascensão meteórica de Matt Hagen de garoto das ruas de Gotham a astro de Hollywood é tragicamente interrompida quando as ações de um chefão do crime local o deixam terrivelmente desfigurado. Abandonado por sua equipe e sem nada, Matt busca um tratamento de ponta que, milagrosamente, o devolve à sua antiga forma... mas que também afeta, de maneira inesperada, sua percepção da realidade, lançando-o em uma espiral destrutiva de obsessão e vingança.',
-    '2026-10-22',
-    106,
-    18,
-    7.5,
-    ['Terror', 'Thriller', 'Ficção científica'],
-    'https://image.tmdb.org/t/p/w600_and_h900_face/dqvHs2YXks989ScXvsngbqAeBHX.jpg',
-    'imagens/cara-de-barro.jpeg'
-  )
 ]
 
+function formatarHora(tempoEmMinutos) {
+  const horas = Math.floor(tempoEmMinutos / 60);
+  const minutos = tempoEmMinutos % 60;
 
-// Varrendo o Array de objetos da classe Filme e executando a função para exibir no console para teste
-for (let filme of filmes) {
-  filme.exibirInformacoes();
+  return `${horas}h ${minutos}min`;
 }
+
+// criação do código HTML do slideshow
+
+criarSlideshow();
+
+// configuração do slideshow
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName('slideshow-item');
+  let dots = document.getElementsByClassName('dot');
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(' active', '');
+  }
+  slides[slideIndex - 1].style.display = 'block';
+  dots[slideIndex - 1].className += ' active';
+}
+
+// **************
 
 function criarCards(listaDeFilmes, container) {
   listaDeFilmes.forEach(filme => {
     // Criação de cada card utilizando DOM
     const divCol = document.createElement('div');
-    const divPoster = document.createElement('div');
-    const imgPoster = document.createElement('img');
-    const spanNota = document.createElement('span');
-    const tituloH3 = document.createElement('h3');
-    const pGeneros = document.createElement('p');
-
     divCol.classList.add('col-fr-1');
+    container.appendChild(divCol);
+
+    const divPoster = document.createElement('div');
     divPoster.classList.add('poster');
+    divCol.appendChild(divPoster);
+
+    const imgPoster = document.createElement('img');
     imgPoster.setAttribute('src', filme.poster);
     imgPoster.setAttribute('alt', filme.titulo);
+    divPoster.appendChild(imgPoster);
+
+    const spanNota = document.createElement('span');
     spanNota.classList.add('rating');
     if (filme.nota === null) {
       spanNota.textContent = '★ N/A';
@@ -161,14 +249,16 @@ function criarCards(listaDeFilmes, container) {
     else {
       spanNota.textContent = `★ ${filme.nota}`;
     }
+    divPoster.appendChild(spanNota);
+
+    const tituloH3 = document.createElement('h3');
     tituloH3.textContent = filme.titulo;
+
+    const pGeneros = document.createElement('p');
     pGeneros.textContent = filme.generos.join(' • ');
 
-    container.appendChild(divCol);
-    divCol.appendChild(divPoster);
-    divPoster.appendChild(imgPoster);
-    divPoster.appendChild(spanNota);
     divCol.append(tituloH3, pGeneros);
+
     // ----------------
 
   });
@@ -181,8 +271,6 @@ const filmesPorData = filmes.sort((a, b) => b.lancamento - a.lancamento);
 
 // Rodando a função para criar os cards
 criarCards(filmesPorData, cardsNews);
-
-
 
 
 // Selecionando o container para criar os cards de filmes mais bem avaliados
