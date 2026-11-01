@@ -116,7 +116,7 @@ const filmes = [
     7.5,
     ['Terror', 'Thriller', 'Ficção científica'],
     'https://image.tmdb.org/t/p/w600_and_h900_face/dqvHs2YXks989ScXvsngbqAeBHX.jpg',
-    'imagens/cara-de-barro.jpeg'
+    'assets/images/cara-de-barro.jpeg'
   ),
 
   new Filme(
@@ -128,7 +128,7 @@ const filmes = [
     6.2,
     ['Ação', 'Fantasia'],
     'https://image.tmdb.org/t/p/w600_and_h900_face/6gWmrC2GyDbUM1ET5EBg9lxBi7S.jpg',
-    'imagens/street-fighter.jpg'
+    'assets/images/street-fighter.jpg'
   ),
 
 
@@ -141,7 +141,7 @@ const filmes = [
     7.5,
     ['Comédia', 'Drama'],
     'https://image.tmdb.org/t/p/w600_and_h900_face/2qelG58fO3tOSPrDVzOW8hfxY3V.jpg',
-    'imagens/digger.jpg'
+    'assets/images/digger.jpg'
   ),
 
   new Filme(
@@ -153,7 +153,7 @@ const filmes = [
     8.0,
     ['Ficção científica', 'Ação', 'Aventura'],
     'https://media.themoviedb.org/t/p/w300_and_h450_face/x0nvYzQpyJc5pdT9lMnkMuYAg0O.jpg',
-    'imagens/homem-aranha.jpeg'
+    'assets/images/homem-aranha.jpeg'
   ),
 
   new Filme(
@@ -165,7 +165,7 @@ const filmes = [
     7.6,
     ['Terror', 'Ficção científica', 'Aventura'],
     'https://image.tmdb.org/t/p/w600_and_h900_face/gQ76UL64RQe3oHwiwHwODTC23g4.jpg',
-    'imagens/resident-evil.jpg'
+    'assets/images/resident-evil.jpg'
 
   ),
 
@@ -178,7 +178,7 @@ const filmes = [
     8.4,
     ['Ação', 'Aventura', 'Fantasia'],
     'https://image.tmdb.org/t/p/w600_and_h900_face/umlg3mqkny7opAfPtBLUGYwZ8xF.jpg',
-    'imagens/a-odisseia.jpg'
+    'assets/images/a-odisseia.jpg'
   ),
 
 ]

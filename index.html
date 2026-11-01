@@ -1,99 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/css/estilo.css" />
+        <script src="assets/js/script.js" defer></script>
+        <link
+            rel="icon"
+            href="assets/images/favicon-cinewave.svg"
+            type="image/svg+xml"
+        />
+        <title>CineWave</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
-    <script src="script.js" defer></script>
-    <link rel="icon" href="imagens/favicon-cinewave.svg" type="image/svg+xml">
-    <title>CineWave</title>
-
-</head>
-
-<body>
-    <header class="header">
-        <div class="logo">
-            <a href="index.html">
-                <img src="imagens/logo-cinewave-branco.png" alt="CineWave">
-            </a>
-        </div>
-
-        <nav class="menu">
-            <a class="item-menu" href="index.html" aria-current="page">Início</a>
-            <a class="item-menu" href="filmes.html">Filmes</a>
-            <a class="item-menu" href="series.html">Séries</a>
-            <a class="item-menu" href="lancamentos.html">Lançamentos</a>
-            <!-- <a class="item-menu" href="minha-lista.html">Minha lista</a> -->
-        </nav>
-        <div class="actions">
-            <div class="busca">
-                <input id="pesquisa" type="search" placeholder="Buscar Título" aria-label="Buscar filmes e séries">
+    <body>
+        <header class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img
+                        src="assets/images/logo-cinewave-branco.png"
+                        alt="CineWave"
+                    />
+                </a>
             </div>
 
-            <a id="link-login" href="login.html">Login</a>
-        </div>
+            <nav class="menu">
+                <a class="item-menu" href="index.html" aria-current="page"
+                    >Início</a
+                >
+                <a class="item-menu" href="filmes.html">Filmes</a>
+                <a class="item-menu" href="series.html">Séries</a>
+                <a class="item-menu" href="lancamentos.html">Lançamentos</a>
+                <!-- <a class="item-menu" href="minha-lista.html">Minha lista</a> -->
+            </nav>
+            <div class="actions">
+                <div class="busca">
+                    <input
+                        id="pesquisa"
+                        type="search"
+                        placeholder="Buscar Título"
+                        aria-label="Buscar filmes e séries"
+                    />
+                </div>
 
-    </header>
-
-    <main>
-        <div class="slideshow">
-            <!-- Preenchido via JavaScript -->
-
-            <button class="anterior" type="button" onclick="plusSlides(-1)"
-                aria-label="Slide anterior">&#10094;</button>
-            <button class="proximo" type="button" onclick="plusSlides(1)" aria-label="Próximo slide">&#10095;</button>
-
-            <div class="slideshow-dots">
-                <button class="dot" type="button" onclick="currentSlide(1)" aria-label="Ir para o slide 1"></button>
-
-                <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Ir para o slide 2"></button>
-
-                <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Ir para o slide 3"></button>
-
+                <a id="link-login" href="login.html">Login</a>
             </div>
+        </header>
 
-        </div>
-
-        <div class="catalogo">
-            <div class="sub-title">
-                <h3>Agora nos cinemas</h3>
-                <h2>Lançamentos recentes</h2>
-            </div>
-
-            <div class="container-news">
+        <main>
+            <div class="slideshow">
                 <!-- Preenchido via JavaScript -->
 
+                <button
+                    class="anterior"
+                    type="button"
+                    onclick="plusSlides(-1)"
+                    aria-label="Slide anterior"
+                >
+                    &#10094;
+                </button>
+                <button
+                    class="proximo"
+                    type="button"
+                    onclick="plusSlides(1)"
+                    aria-label="Próximo slide"
+                >
+                    &#10095;
+                </button>
+
+                <div class="slideshow-dots">
+                    <button
+                        class="dot"
+                        type="button"
+                        onclick="currentSlide(1)"
+                        aria-label="Ir para o slide 1"
+                    ></button>
+
+                    <button
+                        class="dot"
+                        type="button"
+                        onclick="currentSlide(2)"
+                        aria-label="Ir para o slide 2"
+                    ></button>
+
+                    <button
+                        class="dot"
+                        type="button"
+                        onclick="currentSlide(3)"
+                        aria-label="Ir para o slide 3"
+                    ></button>
+                </div>
             </div>
 
-            <hr />
+            <div class="catalogo">
+                <div class="sub-title">
+                    <h3>Agora nos cinemas</h3>
+                    <h2>Lançamentos recentes</h2>
+                </div>
 
-            <div class="sub-title">
-                <h3>Os mais bem avaliados</h3>
-                <h2>Top Rated</h2>
+                <div class="container-news">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+
+                <hr />
+
+                <div class="sub-title">
+                    <h3>Os mais bem avaliados</h3>
+                    <h2>Top Rated</h2>
+                </div>
+
+                <div class="container-top-rated">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-projeto">
+                <p class="footer-nome">CineWave</p>
+                <p class="footer-descricao">
+                    Um projeto acadêmico e pessoal, para catalogar e explorar
+                    filmes e séries.
+                </p>
             </div>
 
-            <div class="container-top-rated">
-                <!-- Preenchido via JavaScript -->
-
+            <div class="footer-autor">
+                <p>Desenvolvido por João Victor Lima</p>
             </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer-projeto">
-            <p class="footer-nome">CineWave</p>
-            <p class="footer-descricao">Um projeto acadêmico e pessoal, para catalogar e explorar filmes e séries.</p>
-        </div>
-
-        <div class="footer-autor">
-            <p>Desenvolvido por João Victor Lima</p>
-        </div>
-        <nav class="footer-contatos" aria-label="Contatos do desenvolvedor">
-            <a href="https://github.com/joaovbslima/">GitHub</a>
-            <a href="https://www.linkedin.com/in/joaovbslima/">LinkedIn</a>
-        </nav>
-    </footer>
-</body>
-
+            <nav class="footer-contatos" aria-label="Contatos do desenvolvedor">
+                <a href="https://github.com/joaovbslima/">GitHub</a>
+                <a href="https://www.linkedin.com/in/joaovbslima/">LinkedIn</a>
+            </nav>
+        </footer>
+    </body>
 </html>
