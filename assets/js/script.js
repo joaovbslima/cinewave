@@ -267,16 +267,52 @@ function criarCards(listaDeFilmes, container) {
 // Selecionando o container para criar os cards de filmes por data de lançamento
 const cardsNews = document.querySelector('.container-news');
 // Ordenando os filmes por data de lançamento de forma decrescente (filmes mais recentes primeiro)
-const filmesPorData = filmes.sort((a, b) => b.lancamento - a.lancamento);
+// const filmesPorData = filmes.sort((a, b) => b.lancamento - a.lancamento);
 
-// Rodando a função para criar os cards
-criarCards(filmesPorData, cardsNews);
+// // Rodando a função para criar os cards
+// criarCards(filmesPorData, cardsNews);
 
 
-// Selecionando o container para criar os cards de filmes mais bem avaliados
+// // Selecionando o container para criar os cards de filmes mais bem avaliados
 const cardsTopRated = document.querySelector('.container-top-rated');
-// Ordenando os filmes por nota de forma decrescente
-const filmesPorNota = filmes.sort((a, b) => b.nota - a.nota);
+// // Ordenando os filmes por nota de forma decrescente
+// const filmesPorNota = filmes.sort((a, b) => b.nota - a.nota);
 
-// Rodando a função para criar os cards
-criarCards(filmesPorNota, cardsTopRated);
+// // Rodando a função para criar os cards
+// criarCards(filmesPorNota, cardsTopRated);
+
+
+
+
+
+async function buscarFilmesPopulares() {
+  const resposta = await fetch('../cinewave/api/populares.php');
+
+  if (!resposta.ok) {
+    throw new Error('Erro ao buscar filmes populares');
+  }
+  const filmes = await resposta.json();
+
+  return filmes;
+
+}
+
+async function inicializaHome() {
+    const filmes = await buscarFilmesPopulares();
+
+    const filmesRecentes = [...filmes].sort((a, b) => {
+        const dataA = new Date(a.lancamento);
+        const dataB = new Date(b.lancamento);
+
+        return dataB - dataA;
+    });
+    criarCards(filmesRecentes, cardsNews);
+
+    
+    const filmesTop = [...filmes].sort((a, b) => b.nota - a.nota);
+    criarCards(filmesTop, cardsTopRated);
+
+    console.log(filmesRecentes);
+}
+
+inicializaHome();
