@@ -30,10 +30,8 @@ foreach ($dados['results'] as $filmeTMDB){
         }
     }
 
-    // $dataLancamento = DateTime::createFromFormat('Y-m-d', $filmeTMDB['release_date']);
-    // $dataBr = $dataLancamento->format('d/m/Y');
-
     $filmeCineWave = [
+        'tmdb_id' => $filmeTMDB['id'],
         'titulo' => $filmeTMDB['title'],
         'sinopse' => $filmeTMDB['overview'],
         'lancamento' => $filmeTMDB['release_date'],
