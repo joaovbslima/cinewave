@@ -1,210 +1,176 @@
 # CineWave
 
-Plataforma web de catálogo de filmes e séries desenvolvida como projeto acadêmico e expandida como projeto pessoal de estudo e desenvolvimento.
+Aplicação web de catálogo de filmes desenvolvida como projeto acadêmico da graduação em Análise e Desenvolvimento de Sistemas e expandida como projeto pessoal de estudo.
 
-> 🚧 Projeto em desenvolvimento.
-
----
+> Projeto em desenvolvimento, construído sem frameworks para praticar os fundamentos de front-end, back-end, integração com APIs e persistência de dados.
 
 ## Sobre o projeto
 
-O CineWave surgiu inicialmente como um trabalho acadêmico de tema livre na graduação em Análise e Desenvolvimento de Sistemas.
+O CineWave utiliza dados da API do TMDB para formar um catálogo local de filmes. As obras são sincronizadas por rotinas em PHP, armazenadas em um banco MySQL e disponibilizadas ao front-end por endpoints internos que retornam JSON.
 
-A partir da proposta inicial, o projeto passou a ser desenvolvido também como ambiente de estudo e prática, acompanhando minha evolução em desenvolvimento web.
+A interface é construída com PHP, HTML e CSS. O JavaScript consome os endpoints com Fetch API, organiza os dados e cria dinamicamente o slideshow e os cards dos catálogos.
 
-A aplicação está sendo construída de forma incremental, começando pelos fundamentos de HTML, CSS e JavaScript e aumentando gradualmente sua complexidade com a integração de APIs, desenvolvimento back-end com PHP e persistência de dados utilizando MySQL.
+O projeto está sendo desenvolvido de maneira incremental, permitindo que cada camada seja estudada e implementada separadamente.
 
-O projeto é desenvolvido sem frameworks nesta etapa, com o objetivo de compreender de forma prática como cada parte da aplicação funciona.
-
----
-
-## Objetivo
-
-O principal objetivo do CineWave é consolidar conhecimentos de desenvolvimento web por meio de um projeto prático e evolutivo.
-
-Além da construção da interface, o projeto busca explorar conceitos como:
+## Objetivos de aprendizagem
 
 - estruturação semântica com HTML;
-- layouts responsivos com CSS;
-- manipulação do DOM;
-- orientação a objetos com JavaScript;
-- geração dinâmica de conteúdo;
-- programação assíncrona;
-- consumo de APIs;
-- integração entre front-end e back-end;
-- requisições HTTP;
-- tratamento e normalização de dados;
-- desenvolvimento de endpoints com PHP;
-- proteção de credenciais da API;
-- modelagem e persistência de dados com MySQL;
-- conexão com o banco de dados utilizando PDO;
-- sincronização de dados entre API externa e banco de dados;
+- criação de layouts responsivos com CSS Grid e Flexbox;
+- manipulação do DOM com JavaScript;
+- programação assíncrona com Fetch API e `async/await`;
+- consumo e tratamento de dados em JSON;
+- criação de páginas e componentes reutilizáveis com PHP;
+- desenvolvimento de endpoints internos;
+- integração com a API externa do TMDB;
+- conexão com MySQL utilizando PDO;
+- consultas preparadas e tratamento de exceções;
+- sincronização e persistência de dados;
+- modelagem de relacionamentos entre filmes e catálogos;
+- proteção de credenciais e configurações privadas;
 - organização e reutilização de código.
 
-A proposta é desenvolver cada funcionalidade compreendendo sua implementação, evitando o uso de frameworks nesta etapa do projeto.
-
----
-
 ## Tecnologias utilizadas
-
-Atualmente:
 
 - HTML5
 - CSS3
 - JavaScript
 - PHP
+- MySQL / MariaDB
+- PDO (PHP Data Objects)
 - API do TMDB
 - JSON
 - cURL
 - Apache / XAMPP
-- MySQL
-- PDO (PHP Data Objects)
-- Git
-- GitHub
+- Git e GitHub
 
-## Funcionalidades atuais
+## Funcionalidades implementadas
 
-- Header com navegação, campo de busca e acesso de login
-- Hero/slideshow de destaques
-- Controles de navegação do slideshow
-- Layout responsivo em desenvolvimento
-- Catálogo de filmes utilizando CSS Grid
-- Cards com pôster, avaliação, título e gêneros
-- Modelagem inicial de filmes utilizando classe JavaScript
-- Criação dinâmica dos cards utilizando manipulação do DOM
-- Ordenação dos filmes por data de lançamento
-- Ordenação dos filmes por avaliação
-- Uso de cópias de arrays antes das operações de ordenação
-- Tratamento de dados ausentes na interface
-- Função reutilizável para renderização dos cards
-- Uso de Flexbox e Grid em diferentes componentes da interface
-- Consumo assíncrono de dados com Fetch API
-- Integração do front-end com endpoints PHP
-- Integração do back-end com a API do TMDB
-- Tratamento e normalização dos dados recebidos da API
-- Conversão dos IDs de gêneros em seus respectivos nomes
-- Proteção do token da API no servidor
-- Conexão com banco MySQL utilizando PDO
-- Rotina PHP de sincronização de filmes da TMDB para o banco de dados
-- Gravação dos dados de filmes retornados pela API no banco local
+### Interface
 
----
+- páginas estruturadas em PHP;
+- header e footer reutilizados por meio de `require_once`;
+- navegação com identificação da página atual;
+- Home responsiva;
+- hero/slideshow preenchido dinamicamente;
+- controles de navegação do slideshow;
+- seção de lançamentos recentes;
+- seção de filmes mais bem avaliados;
+- página de Lançamentos alimentada dinamicamente;
+- cards com pôster, avaliação, título e gêneros;
+- Grid responsivo e reutilizável para os catálogos;
+- abertura do trailer disponível no YouTube.
 
-## Estrutura atual da aplicação
+### JavaScript
 
-A página inicial possui sua estrutura visual principal composta por:
+- consumo assíncrono dos endpoints PHP;
+- separação entre serviços de API, componentes e lógica das páginas;
+- função reutilizável para criação dos cards;
+- limite opcional de itens exibidos;
+- ordenação dos lançamentos por data;
+- cópia de arrays antes da ordenação;
+- tratamento de falhas na página de Lançamentos;
+- criação dinâmica dos elementos com manipulação do DOM.
 
-- Header
-- Hero/slideshow
-- Seção de lançamentos recentes
-- Seção de filmes mais bem avaliados
-- Footer
+### Back-end e banco de dados
 
-Os cards dos catálogos são gerados dinamicamente pelo JavaScript.
+- conexão com MySQL utilizando PDO;
+- consultas preparadas;
+- endpoint de filmes em exibição;
+- endpoint de filmes mais bem avaliados;
+- rotina configurável de sincronização com a TMDB;
+- sincronização de uma página do catálogo `now_playing`;
+- sincronização de cinco páginas do catálogo `top_rated`;
+- busca de detalhes adicionais de cada filme;
+- armazenamento de duração, classificação indicativa, trailer, gêneros e imagens;
+- relacionamento muitos-para-muitos entre filmes e catálogos;
+- atualização de filmes já existentes com `ON DUPLICATE KEY UPDATE`;
+- cálculo de nota ponderada para o catálogo Top Rated;
+- tratamento de exceções nas consultas dos endpoints;
+- token da TMDB e credenciais do banco fora do versionamento.
 
-A aplicação já possui integração com dados reais da API do TMDB utilizando PHP como intermediário entre o front-end e a API externa.
+## Arquitetura atual
 
-O fluxo atual funciona da seguinte forma:
+O CineWave trabalha com dois fluxos principais.
 
-JavaScript → endpoint PHP → TMDB → PHP → JSON → JavaScript → DOM
+### Sincronização
 
-O PHP recebe os dados da TMDB, realiza tratamentos e normalizações e devolve ao front-end apenas as informações necessárias para a interface.
+```text
+TMDB
+  ↓
+api/sincronizar-filmes.php
+  ↓
+normalização dos dados
+  ↓
+MySQL
+```
 
-Além desse fluxo de exibição, o projeto agora possui uma rotina de sincronização que consulta filmes na TMDB e grava os dados no MySQL por meio do PHP e do PDO. **A existência dessa rotina não significa que o catálogo exibido no front-end já esteja lendo os registros do banco.**
+A sincronização consulta um catálogo da TMDB, busca os detalhes de cada obra e atualiza as tabelas locais.
 
-O hero/slideshow ainda utiliza temporariamente os dados locais definidos no JavaScript e será integrado posteriormente aos dados da API.
+### Exibição
 
----
+```text
+Página PHP
+  ↓
+JavaScript / Fetch API
+  ↓
+Endpoint PHP interno
+  ↓
+MySQL
+  ↓
+JSON
+  ↓
+DOM
+```
 
-## JavaScript
+As páginas não consultam o banco diretamente. O acesso aos dados fica concentrado nos endpoints PHP da pasta `api`.
 
-O projeto utiliza JavaScript tanto para interação quanto para geração e tratamento de conteúdo.
+## Catálogos sincronizados
 
-Entre os conceitos atualmente aplicados estão:
+| Chave | Finalidade | Páginas da TMDB |
+| --- | --- | ---: |
+| `now_playing` | Filmes atualmente em exibição | 1 |
+| `top_rated` | Filmes mais bem avaliados | 5 |
 
-- classes e objetos;
-- arrays;
-- métodos de arrays;
-- spread operator;
-- funções;
-- funções assíncronas;
-- async/await;
-- Promises;
-- Fetch API;
-- estruturas condicionais;
-- manipulação do DOM;
-- criação dinâmica de elementos HTML;
-- alteração de atributos e conteúdo;
-- ordenação de dados;
-- manipulação de datas;
-- tratamento de respostas HTTP;
-- interpretação de JSON;
-- reutilização de funções;
-- controle do slideshow.
+Os filmes podem participar de mais de um catálogo. A posição original de cada obra é armazenada na tabela de relacionamento.
 
-A implementação continuará sendo expandida conforme novos conceitos forem estudados e novas funcionalidades forem adicionadas ao projeto.
+## Nota CineWave
 
----
+O Top Rated utiliza uma média ponderada para reduzir o impacto de avaliações muito altas baseadas em poucos votos.
 
-## Back-end com PHP
+```text
+nota_cinewave = ((v × R) + (m × C)) / (v + m)
+```
 
-O CineWave já possui uma camada inicial de back-end desenvolvida em PHP.
+Onde:
 
-O PHP atua como intermediário entre o JavaScript do front-end e a API do TMDB. Também é utilizado na comunicação com o banco de dados MySQL e na sincronização dos filmes.
+- `R` é a nota do filme;
+- `v` é a quantidade de votos;
+- `C` é a média geral das notas armazenadas;
+- `m` é o peso mínimo de votos definido pela aplicação.
 
-A comunicação com a TMDB utiliza cURL.
+Atualmente, o peso mínimo utilizado é de 5.000 votos. Em caso de empate na nota calculada, a quantidade de votos é utilizada como critério de desempate.
 
-Foi criada uma função reutilizável responsável por:
+## Estrutura do banco de dados
 
-- receber a URL da requisição;
-- enviar o token de autenticação;
-- executar a chamada HTTP;
-- verificar erros do cURL;
-- validar o status da resposta;
-- interpretar o JSON retornado;
-- devolver os dados para os endpoints da aplicação.
+### `filmes`
 
-O token da TMDB é armazenado em um arquivo de configuração local que não é versionado no Git.
+Armazena os dados normalizados das obras, incluindo identificador da TMDB, títulos, sinopse, lançamento, duração, classificação, avaliações, gêneros, imagens e trailer.
 
-Um arquivo `config.example.php` é mantido no repositório como referência para configuração do projeto.
+### `catalogos`
 
----
+Registra os catálogos disponíveis na aplicação, como `now_playing` e `top_rated`.
 
-## Integração com TMDB
+### `filmes_catalogos`
 
-A API do TMDB é utilizada como principal fonte de dados externos de filmes e séries do CineWave.
+Relaciona os filmes aos catálogos e armazena a posição e o momento da sincronização.
 
-Atualmente, a aplicação já recebe dinamicamente informações como:
+```text
+filmes 1 ─── N filmes_catalogos N ─── 1 catalogos
+```
 
-- títulos;
-- sinopses;
-- datas de lançamento;
-- avaliações;
-- gêneros;
-- pôsteres;
-- imagens de backdrop.
+O arquivo `database/cinewave.sql` contém a estrutura das tabelas, seus índices, chaves estrangeiras e os registros iniciais dos catálogos.
 
-O primeiro endpoint interno implementado foi:
-
-`api/populares.php`
-
-Esse endpoint consulta os filmes populares da TMDB, processa os dados recebidos e devolve ao JavaScript uma estrutura adequada ao CineWave.
-
-Os gêneros retornados originalmente pela TMDB como IDs numéricos também são tratados no back-end.
-
-Exemplo:
-
-`genre_ids: [28, 12, 878]`
-
-é transformado em:
-
-`generos: ["Ação", "Aventura", "Ficção científica"]`
-
-O front-end consome os dados do endpoint PHP utilizando `fetch()` e `async/await`. Uma rotina PHP separada também utiliza dados da TMDB para alimentar o banco local.
-
----
-
-## Estrutura atual do projeto
+## Estrutura do projeto
 
 ```text
 cinewave/
@@ -220,153 +186,130 @@ cinewave/
 │   │   └── estilo.css
 │   ├── images/
 │   └── js/
-│       └── script.js
+│       ├── componentes.js
+│       ├── home.js
+│       ├── lancamentos.js
+│       └── servicos-api.js
 ├── database/
 │   └── cinewave.sql
+├── includes/
+│   ├── footer.php
+│   └── header.php
 ├── .gitignore
 ├── config.example.php
-├── config.php
-├── filmes.html
-├── index.html
-├── lancamentos.html
+├── filmes.php
+├── index.php
+├── lancamentos.php
 ├── login.html
 ├── README.md
-└── series.html
+└── series.php
 ```
 
-### Responsabilidade dos principais arquivos
+O arquivo `config.php` existe somente no ambiente local e não deve ser enviado ao repositório.
+
+O `login.html` permanece como estrutura provisória. A autenticação será migrada e implementada em uma etapa posterior.
+
+## Responsabilidade dos principais arquivos
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `api/database.php` | Conexão do PHP com o MySQL utilizando PDO. |
-| `api/tmdb.php` | Função reutilizável para realizar requisições à API do TMDB. |
-| `api/populares.php` | Endpoint de filmes populares. |
-| `api/lancamentos.php` | Endpoint destinado aos lançamentos. |
-| `api/top-rated.php` | Endpoint destinado aos filmes mais bem avaliados. |
-| `api/sincronizar-filmes.php` | Rotina de sincronização dos dados de filmes da TMDB com o MySQL. |
-| `database/cinewave.sql` | Arquivo SQL da estrutura do banco de dados. |
-| `assets/js/script.js` | Lógica e interações do front-end, incluindo a renderização dinâmica. |
-| `assets/css/estilo.css` | Estilos da interface. |
-| `config.example.php` | Referência para as configurações locais, sem credenciais reais. |
-
-> A árvore representa os arquivos existentes no ambiente de desenvolvimento. O `config.php` contém configurações privadas e deve permanecer fora do controle de versão. A existência dos endpoints não implica que todas as páginas já estejam integradas a eles.
-
----
-
-## Próximas funcionalidades
-
-Entre as próximas etapas planejadas estão:
-
-- integração e validação dos endpoints de lançamentos e filmes mais bem avaliados no front-end;
-- utilização dos dados da API no hero/slideshow;
-- remoção progressiva dos dados locais utilizados como mock;
-- integração dinâmica da página de Filmes;
-- integração dinâmica da página de Séries;
-- integração dinâmica da página de Lançamentos;
-- busca de filmes e séries;
-- página de detalhes de cada título;
-- melhoria da responsividade;
-- tratamento visual de carregamento e falhas de requisição;
-- tratamento de imagens ou informações ausentes;
-- implementação das ações de trailer;
-- desenvolvimento da funcionalidade Minha Lista;
-- autenticação de usuários;
-- utilização dos registros persistidos no MySQL em funcionalidades da aplicação;
-- evolução das consultas e operações com o banco de dados.
-
----
-
-## Banco de dados
-
-O projeto iniciou a integração com **MySQL**, utilizando **PDO (PHP Data Objects)** para estabelecer a conexão entre PHP e o banco relacional.
-
-Foi implementada uma rotina PHP de sincronização que consulta filmes da API do TMDB e grava informações dos resultados no banco local. A sincronização foi testada com os itens retornados pela API, com inserções realizadas com sucesso.
-
-Essa etapa permitiu praticar:
-
-- conexão de PHP com MySQL por meio de PDO;
-- consultas a uma API externa para obtenção dos filmes;
-- preparação e persistência dos dados recebidos;
-- integração entre uma fonte de dados externa e o banco local.
-
-A integração do banco ainda está em evolução. O front-end existente continua consumindo o endpoint PHP conectado à TMDB; a passagem da leitura do catálogo para o banco local não deve ser presumida como concluída.
-
-**Próximos objetivos relacionados ao banco:** estruturar a utilização dos dados persistidos nas funcionalidades do CineWave e, posteriormente, armazenar informações próprias da aplicação, como usuários, listas pessoais, status de visualização e avaliações.
-
-**Segurança e versionamento:** credenciais de acesso ao MySQL e o token da TMDB não devem ser enviados ao repositório. A estrutura do banco poderá ser compartilhada futuramente por meio de um script SQL sem informações sensíveis, em vez de versionar os arquivos de dados locais do MySQL.
-
----
-
-## Status do projeto
-
-O CineWave está em desenvolvimento contínuo.
-
-### Etapa atual
-
-- ✅ Estrutura principal da Home
-- ✅ Header e footer
-- ✅ Hero/slideshow funcional
-- ✅ Modelagem inicial dos filmes em JavaScript
-- ✅ Cards gerados dinamicamente pelo DOM
-- ✅ Ordenação dos catálogos por critérios diferentes
-- ✅ Integração inicial com a API do TMDB
-- ✅ Back-end inicial desenvolvido em PHP
-- ✅ Requisições à TMDB utilizando cURL
-- ✅ Token da API protegido no servidor
-- ✅ Função reutilizável para requisições à TMDB
-- ✅ Conversão e normalização dos gêneros
-- ✅ Endpoint de filmes populares
-- ✅ JavaScript consumindo dados do back-end com Fetch API
-- ✅ Cards da Home utilizando dados reais da API
-- ✅ Integração inicial com MySQL
-- ✅ Conexão PHP → MySQL utilizando PDO
-- ✅ Script PHP para sincronização dos filmes da TMDB
-- ✅ Sincronização testada com os resultados retornados pela API
-- 🔄 Integração completa da Home
-- 🔄 Responsividade em refinamento
-- 🔜 Endpoint de lançamentos
-- 🔜 Endpoint de filmes mais bem avaliados
-- 🔜 Integração do hero/slideshow com a API
-- 🔜 Desenvolvimento dinâmico das páginas de Filmes, Séries e Lançamentos
-- 🔜 Busca e página de detalhes
-- 🔄 Evolução da integração com o banco de dados
-- 🔜 Utilização do catálogo persistido no MySQL pela aplicação
-- 🔜 Funcionalidades relacionadas aos usuários e às listas pessoais
-
-Novas funcionalidades são adicionadas conforme avanço nos estudos e na implementação dos conteúdos trabalhados na graduação.
-
----
+| `includes/header.php` | Estrutura inicial das páginas e navegação compartilhada. |
+| `includes/footer.php` | Rodapé e fechamento da estrutura HTML. |
+| `assets/js/componentes.js` | Criação reutilizável dos cards. |
+| `assets/js/servicos-api.js` | Funções de comunicação com os endpoints internos. |
+| `assets/js/home.js` | Slideshow e inicialização dos catálogos da Home. |
+| `assets/js/lancamentos.js` | Ordenação e renderização da página de Lançamentos. |
+| `api/database.php` | Criação da conexão PDO com o MySQL. |
+| `api/tmdb.php` | Funções reutilizáveis para comunicação com a TMDB. |
+| `api/sincronizar-filmes.php` | Sincronização dos catálogos da TMDB com o banco. |
+| `api/lancamentos.php` | Consulta dos filmes vinculados ao catálogo `now_playing`. |
+| `api/top-rated.php` | Consulta e classificação ponderada dos filmes do Top Rated. |
+| `database/cinewave.sql` | Estrutura reproduzível do banco de dados. |
 
 ## Execução local
 
-Como o projeto passou a utilizar PHP no back-end, a versão completa precisa ser executada através de um servidor com suporte a PHP.
+### Requisitos
 
-Durante o desenvolvimento são utilizados **Apache e MySQL**, por meio do XAMPP, com suporte a PHP e à extensão PDO para MySQL.
+- Apache com PHP;
+- MySQL ou MariaDB;
+- extensão PDO MySQL;
+- extensão cURL;
+- token de acesso à API do TMDB.
 
-Para executar as funcionalidades que acessam o banco, é necessário ter um banco MySQL local configurado e uma conexão PDO válida. Os parâmetros de conexão devem permanecer em configuração privada, fora do versionamento. A criação do banco e das tabelas depende do esquema efetivamente utilizado no projeto.
+Durante o desenvolvimento, o projeto é executado com XAMPP.
 
-Exemplo de acesso local:
+### Configuração
 
-`http://localhost/projetos/cinewave/`
+1. Coloque o projeto dentro da pasta servida pelo Apache, por exemplo:
 
-O projeto possui histórico de publicação do front-end utilizando GitHub Pages, porém funcionalidades que dependem do PHP não são executadas pelo GitHub Pages.
+   ```text
+   C:\xampp\htdocs\projetos\cinewave
+   ```
 
----
+2. Importe `database/cinewave.sql` pelo phpMyAdmin.
 
-## Repositório
+3. Crie `config.php` a partir de `config.example.php`.
 
-Este repositório contém o código-fonte do CineWave e acompanha a evolução do projeto durante seu desenvolvimento.
+4. Preencha o token da TMDB e as configurações locais do banco.
 
-O histórico de commits registra a evolução gradual da aplicação, desde a construção inicial da interface até a integração entre JavaScript, PHP, a API do TMDB e a camada inicial de persistência com MySQL.
+5. Inicie Apache e MySQL no XAMPP.
 
----
+6. Execute as sincronizações pelo navegador:
+
+   ```text
+   http://localhost/projetos/cinewave/api/sincronizar-filmes.php?catalogo=now_playing
+   http://localhost/projetos/cinewave/api/sincronizar-filmes.php?catalogo=top_rated
+   ```
+
+7. Acesse a aplicação:
+
+   ```text
+   http://localhost/projetos/cinewave/
+   ```
+
+## Segurança e versionamento
+
+O token da TMDB e as credenciais do MySQL são armazenados em `config.php`, que está incluído no `.gitignore`.
+
+O repositório mantém apenas `config.example.php`, sem informações privadas. O arquivo SQL versionado contém a estrutura necessária para recriar o banco, mas não precisa armazenar o catálogo completo de filmes.
+
+Por utilizar PHP e MySQL, a versão completa do CineWave não pode ser executada diretamente pelo GitHub Pages.
+
+## Status atual
+
+- ✅ Páginas migradas para PHP
+- ✅ Header e footer compartilhados
+- ✅ Home integrada ao banco de dados
+- ✅ Hero/slideshow dinâmico
+- ✅ Lançamentos recentes dinâmicos
+- ✅ Top Rated com nota ponderada
+- ✅ Página de Lançamentos funcional
+- ✅ Componentes JavaScript reutilizáveis
+- ✅ Serviços de API separados da interface
+- ✅ Sincronização configurável dos catálogos
+- ✅ Banco relacional com chaves e índices
+- 🔄 Página geral de Filmes
+- 🔜 Persistência e exibição de Séries
+- 🔜 Busca de filmes e séries
+- 🔜 Página de detalhes das obras
+- 🔜 Melhorias no tratamento de dados ausentes
+- 🔜 Autenticação de usuários
+- 🔜 Minha Lista individual por usuário
+
+## Próximas etapas
+
+1. criar o endpoint e a interface do catálogo geral de filmes;
+2. modelar e sincronizar séries;
+3. implementar a página dinâmica de Séries;
+4. melhorar estados de carregamento, falha e dados ausentes;
+5. desenvolver busca e página de detalhes;
+6. implementar autenticação e Minha Lista.
 
 ## Autor
 
 **João Victor Lima**
 
-Estudante de Análise e Desenvolvimento de Sistemas, atualmente aprofundando conhecimentos em desenvolvimento de software, com foco prático em desenvolvimento web, JavaScript e integração entre front-end e back-end.
+Estudante de Análise e Desenvolvimento de Sistemas, aprofundando conhecimentos em desenvolvimento web, JavaScript, PHP, APIs e bancos de dados.
 
-- LinkedIn: [João Victor Lima](https://www.linkedin.com/in/joaovbslima/)
-
-- GitHub: [joaovbslima](https://github.com/joaovbslima/)
+- [GitHub](https://github.com/joaovbslima/)
+- [LinkedIn](https://www.linkedin.com/in/joaovbslima/)

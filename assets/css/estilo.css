@@ -339,6 +339,13 @@ main {
 .sub-title {
     margin-bottom: 24px;
 }
+.sub-title h1 {
+    color: #38bdf8;
+    margin: 16px 0;
+    font-size: clamp(40px, 4vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+}
 
 .sub-title h2 {
     font-size: 24px;
@@ -348,7 +355,6 @@ main {
 }
 
 .sub-title h3 {
-    /* padding: 5px; */
     margin-bottom: 4px;
     font-size: 12px;
     font-weight: 600;
@@ -362,8 +368,7 @@ hr {
     border: none;
 }
 
-.container-news,
-.container-top-rated {
+.container-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 40px;

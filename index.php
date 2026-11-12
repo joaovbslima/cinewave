@@ -56,7 +56,7 @@ require_once 'includes/header.php';
                     <h2>Lançamentos recentes</h2>
                 </div>
 
-                <div class="container-news">
+                <div class="container-news container-cards">
                     <!-- Preenchido via JavaScript -->
                 </div>
 
@@ -67,12 +67,13 @@ require_once 'includes/header.php';
                     <h2>Top Rated</h2>
                 </div>
 
-                <div class="container-top-rated">
+                <div class="container-top-rated container-cards">
                     <!-- Preenchido via JavaScript -->
                 </div>
             </div>
         </main>
 <script src="assets/js/componentes.js"></script>
+<script src="assets/js/servicos-api.js"></script>
 <script src="assets/js/home.js"></script>
 
 <?php
