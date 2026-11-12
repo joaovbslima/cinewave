@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10/11/2026 às 03:53
+-- Tempo de geração: 12/11/2026 às 17:27
 -- Versão do servidor: 10.11.16-MariaDB
 -- Versão do PHP: 8.3.36
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `cinewave`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `catalogos`
+--
+
+CREATE TABLE `catalogos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `chave` varchar(50) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `criado_em` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -48,9 +61,29 @@ CREATE TABLE `filmes` (
   `atualizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `filmes_catalogos`
+--
+
+CREATE TABLE `filmes_catalogos` (
+  `filme_id` int(10) UNSIGNED NOT NULL,
+  `catalogo_id` int(10) UNSIGNED NOT NULL,
+  `posicao` smallint(5) UNSIGNED NOT NULL,
+  `sincronizado_em` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `catalogos`
+--
+ALTER TABLE `catalogos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uq_catalogos_chave` (`chave`);
 
 --
 -- Índices de tabela `filmes`
@@ -61,14 +94,38 @@ ALTER TABLE `filmes`
   ADD KEY `idx_filmes_data_lancamento` (`data_lancamento`);
 
 --
+-- Índices de tabela `filmes_catalogos`
+--
+ALTER TABLE `filmes_catalogos`
+  ADD PRIMARY KEY (`filme_id`,`catalogo_id`),
+  ADD KEY `idx_filmes_catalogos_catalogo_posicao` (`catalogo_id`,`posicao`);
+
+--
 -- AUTO_INCREMENT para tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `catalogos`
+--
+ALTER TABLE `catalogos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `filmes`
 --
 ALTER TABLE `filmes`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para tabelas despejadas
+--
+
+--
+-- Restrições para tabelas `filmes_catalogos`
+--
+ALTER TABLE `filmes_catalogos`
+  ADD CONSTRAINT `fk_filmes_catalogos_catalogo` FOREIGN KEY (`catalogo_id`) REFERENCES `catalogos` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_filmes_catalogos_filme` FOREIGN KEY (`filme_id`) REFERENCES `filmes` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
