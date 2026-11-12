@@ -11,7 +11,7 @@ function criarSlideshow(listaEstreias) {
   // Criação do hero/slideshow de forma dinâmica
   const slideshow = document.querySelector('.slideshow');
   // criação de cada item do slideshow
-  listaEstreias.slice(0, 3).forEach(filme => {
+  listaEstreias.slice(1, 4).forEach(filme => {
     const slideshowItem = document.createElement('div');
     slideshowItem.classList.add('slideshow-item');
     slideshow.appendChild(slideshowItem);
@@ -44,6 +44,14 @@ function criarSlideshow(listaEstreias) {
     spanLancamento.textContent = dataLancamento.toLocaleDateString('pt-BR');
     metaSlide.appendChild(spanLancamento);
 
+    const spanDuracao = document.createElement('span');
+    spanDuracao.textContent = formatarHora(filme.duracao);
+    metaSlide.appendChild(spanDuracao);
+
+    const spanClassificacao = document.createElement('span');
+    spanClassificacao.textContent = filme.classificacao_indicativa;
+    metaSlide.appendChild(spanClassificacao);
+
     const spanGenero = document.createElement('span');
     spanGenero.textContent = filme.generos.join(' • ');
     metaSlide.appendChild(spanGenero);
@@ -60,6 +68,8 @@ function criarSlideshow(listaEstreias) {
     const botaoSlidePrimario = document.createElement('a');
     botaoSlidePrimario.classList.add('botao-slide');
     botaoSlidePrimario.classList.add('botao-primario');
+    botaoSlidePrimario.setAttribute('href', filme.trailer);
+    botaoSlidePrimario.setAttribute('target', "_blank");
     botaoSlidePrimario.textContent = 'Assistir trailer';
     acoesSlide.appendChild(botaoSlidePrimario);
 
@@ -67,7 +77,7 @@ function criarSlideshow(listaEstreias) {
     botaoSlideSecundario.classList.add('botao-slide');
     botaoSlideSecundario.classList.add('botao-secundario');
     botaoSlideSecundario.textContent = '+ Minha lista';
-    acoesSlide.appendChild(botaoSlideSecundario);
+    acoesSlide.appendChild(botaoSlideSecundario)
 
   });
 }
@@ -110,10 +120,10 @@ function showSlides(n) {
     dots[slideIndex - 1].className += ' active';
 }
 
-// **************
+// **************listaEstreias.slice(0, 3)
 
 function criarCards(listaDeFilmes, container) {
-  listaDeFilmes.forEach(filme => {
+  listaDeFilmes.slice(0, 10).forEach(filme => {
     // Criação de cada card utilizando DOM
     const divCol = document.createElement('div');
     divCol.classList.add('col-fr-1');
@@ -130,11 +140,12 @@ function criarCards(listaDeFilmes, container) {
 
     const spanNota = document.createElement('span');
     spanNota.classList.add('rating');
-    if (filme.nota === null) {
-      spanNota.textContent = '★ N/A';
+    const notaExibida = filme.nota_cinewave ?? filme.nota;
+    if (notaExibida === null) {
+        spanNota.textContent = '★ N/A';
     }
     else {
-      spanNota.textContent = `★ ${filme.nota}`;
+        spanNota.textContent = `★ ${notaExibida}`;
     }
     divPoster.appendChild(spanNota);
 

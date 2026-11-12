@@ -1,56 +1,123 @@
 <?php 
+header('Content-Type: application/json; charset=utf-8');
 
 $config = require_once '../config.php';
-require_once 'tmdb.php';
-
-
-$token = $config['tmdb_token'];
-
-$urlTopRated = 'https://api.themoviedb.org/3/movie/top_rated?language=pt-BR';
-$dados = buscarTMDB($urlTopRated, $token);
-
-// Realiza a busca dos gêneros
-
-$mapaGeneros = buscarMapaGeneros('movie', $token);
-
-
-// Cria o array com os filmes mais bem avaliados com os dados utilizados
+require_once 'database.php';
 
 $filmesCineWave = [];
-$baseImagem = 'https://image.tmdb.org/t/p/w500';
 
-foreach ($dados['results'] as $filmeTMDB){
-    $generosFilme = [];
+try {
+    $pdo = conectarBanco($config);
 
-    foreach ($filmeTMDB['genre_ids'] as $idGenero) {
-        if (isset($mapaGeneros[$idGenero])) {
-            $generosFilme[] = $mapaGeneros[$idGenero];
-        }
+    $sql = "SELECT
+                f.tmdb_id,
+                f.titulo,
+                f.sinopse,
+                f.data_lancamento AS lancamento,
+                f.nota,
+                f.quantidade_votos,
+                f.duracao_minutos,
+                f.classificacao_indicativa,
+                f.generos,
+                f.poster_path,
+                f.backdrop_path,
+                f.trailer_key
+            FROM filmes AS f
+
+            INNER JOIN filmes_catalogos AS fc
+                ON fc.filme_id = f.id
+
+            INNER JOIN catalogos AS c
+                ON c.id = fc.catalogo_id
+
+            WHERE c.chave = :chave
+
+            ORDER BY fc.posicao ASC
+    ";
+
+    $consulta = $pdo->prepare($sql);
+
+    $consulta->execute([
+        'chave' => 'top_rated'
+    ]);
+
+    $filmesBanco = $consulta->fetchAll();
+
+    $consultaMedia = $pdo->query("SELECT AVG(nota) FROM filmes WHERE quantidade_votos > 0");
+    $mediaGeral = (float) $consultaMedia->fetchColumn();
+    $pesoMinimo = 5000;
+
+    foreach ($filmesBanco as $indice => $filme) {
+        $nota = (float) $filme['nota'];
+        $quantidadeVotos = (int) $filme['quantidade_votos'];
+
+        $notaCineWave = (($quantidadeVotos * $nota) + ($pesoMinimo * $mediaGeral)) / ($quantidadeVotos + $pesoMinimo);
+
+        $filmesBanco[$indice]['nota_cinewave'] = $notaCineWave;
     }
+    
+    
+    $baseImagem = 'https://image.tmdb.org/t/p/w500';
+    $baseTrailer = 'https://www.youtube.com/watch?v=';
 
-    $filmeCineWave = [
-        'tmdb_id' => $filmeTMDB['id'],
-        'titulo' => $filmeTMDB['title'],
-        'sinopse' => $filmeTMDB['overview'],
-        'lancamento' => $filmeTMDB['release_date'],
-        'nota' => $filmeTMDB['vote_average'],
-        'poster' => $baseImagem . $filmeTMDB['poster_path'],
-        'backdrop' => $baseImagem . $filmeTMDB['backdrop_path'],
-        'generos' => $generosFilme
+    foreach ($filmesBanco as $filme) {
+        $generos = json_decode(
+            $filme['generos'],
+            true
+        ) ?? [];
+
+        $filmeCineWave = [
+            'tmdb_id' => $filme['tmdb_id'],
+            'titulo' => $filme['titulo'],
+            'sinopse' => $filme['sinopse'],
+            'lancamento' => $filme['lancamento'] ?? null,
+            'duracao' => $filme['duracao_minutos'] ?? null,
+            'nota' => (float) $filme['nota'],
+            'nota_cinewave' => round((float) $filme['nota_cinewave'],1),
+            'quantidade_votos' => (int) $filme['quantidade_votos'],
+            'classificacao_indicativa' => $filme['classificacao_indicativa'],
+            'generos' => $generos,
+            'poster' => $filme['poster_path'] !== null ? $baseImagem . $filme['poster_path'] : null,
+            'backdrop' => $filme['backdrop_path'] !== null ? $baseImagem . $filme['backdrop_path'] : null,
+            'trailer' => $filme['trailer_key'] !== null ? $baseTrailer . $filme['trailer_key'] : null
         ];
-        
+
         $filmesCineWave[] = $filmeCineWave;
     }
+
+    usort(
+        $filmesCineWave,
+        function ($filmeA, $filmeB) {
+            $comparacaoNota =
+                (float) $filmeB['nota_cinewave']
+                <=> (float) $filmeA['nota_cinewave'];
+
+            if ($comparacaoNota !== 0) {
+                return $comparacaoNota;
+            }
+
+            return (int) $filmeB['quantidade_votos']
+                <=> (int) $filmeA['quantidade_votos'];
+        }
+    );
+
+} catch (PDOException $e) {
+    http_response_code(500);
+
+    echo json_encode(
+        ['erro' => 'Não foi possível consultar os filmes mais bem avaliados.'],
+        JSON_UNESCAPED_UNICODE
+    );
+
+    exit;
+}
         
-header('Content-Type: application/json; charset=utf-8');
+
 echo json_encode(
     $filmesCineWave,
     JSON_UNESCAPED_UNICODE |
     JSON_UNESCAPED_SLASHES |
     JSON_PRETTY_PRINT
 );
-
-
-
 
 ?>
