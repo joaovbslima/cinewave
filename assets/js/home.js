@@ -120,47 +120,6 @@ function showSlides(n) {
     dots[slideIndex - 1].className += ' active';
 }
 
-// **************listaEstreias.slice(0, 3)
-
-function criarCards(listaDeFilmes, container) {
-  listaDeFilmes.slice(0, 10).forEach(filme => {
-    // Criação de cada card utilizando DOM
-    const divCol = document.createElement('div');
-    divCol.classList.add('col-fr-1');
-    container.appendChild(divCol);
-
-    const divPoster = document.createElement('div');
-    divPoster.classList.add('poster');
-    divCol.appendChild(divPoster);
-
-    const imgPoster = document.createElement('img');
-    imgPoster.setAttribute('src', filme.poster);
-    imgPoster.setAttribute('alt', filme.titulo);
-    divPoster.appendChild(imgPoster);
-
-    const spanNota = document.createElement('span');
-    spanNota.classList.add('rating');
-    const notaExibida = filme.nota_cinewave ?? filme.nota;
-    if (notaExibida === null) {
-        spanNota.textContent = '★ N/A';
-    }
-    else {
-        spanNota.textContent = `★ ${notaExibida}`;
-    }
-    divPoster.appendChild(spanNota);
-
-    const tituloH3 = document.createElement('h3');
-    tituloH3.textContent = filme.titulo;
-
-    const pGeneros = document.createElement('p');
-    pGeneros.textContent = filme.generos.join(' • ');
-
-    divCol.append(tituloH3, pGeneros);
-
-    // ----------------
-
-  });
-}
 
 // Selecionando o container para criar os cards de filmes por data de lançamento
 const cardsNews = document.querySelector('.container-news');
@@ -171,7 +130,7 @@ const cardsTopRated = document.querySelector('.container-top-rated');
 
 // Buscando os dados dos filmes através de requisição feita no arquivo php
 async function buscarFilmesEmExibicao() {
-  const resposta = await fetch('../cinewave/api/lancamentos.php');
+  const resposta = await fetch('api/lancamentos.php');
 
   if (!resposta.ok) {
     throw new Error('Erro ao buscar filmes em exibição');
@@ -183,7 +142,7 @@ async function buscarFilmesEmExibicao() {
 }
 
 async function buscarFilmesTopRated() {
-  const resposta = await fetch('../cinewave/api/top-rated.php');
+  const resposta = await fetch('api/top-rated.php');
 
   if (!resposta.ok) {
     throw new Error('Erro ao buscar filmes Top Rated');
@@ -211,11 +170,11 @@ async function inicializaHome() {
 
     showSlides(slideIndex);
 
-    criarCards(filmesRecentes, cardsNews);
+    criarCards(filmesRecentes, cardsNews, 10);
 
     
     const filmesTop = await buscarFilmesTopRated();
-    criarCards(filmesTop, cardsTopRated);
+    criarCards(filmesTop, cardsTopRated, 10);
 
 }
 

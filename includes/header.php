@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="assets/css/estilo.css" />
-        <script src="assets/js/script.js" defer></script>
         <link
             rel="icon"
             href="assets/images/favicon-cinewave.svg"
@@ -16,7 +15,7 @@
     <body>
         <header class="header">
             <div class="logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img
                         src="assets/images/logo-cinewave-branco.png"
                         alt="CineWave"

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12/11/2026 às 17:27
+-- Tempo de geração: 12/11/2026 às 18:58
 -- Versão do servidor: 10.11.16-MariaDB
 -- Versão do PHP: 8.3.36
 
@@ -33,6 +33,14 @@ CREATE TABLE `catalogos` (
   `nome` varchar(100) NOT NULL,
   `criado_em` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `catalogos`
+--
+
+INSERT INTO `catalogos` (`id`, `chave`, `nome`, `criado_em`) VALUES
+(1, 'now_playing', 'Em exibição', '2026-11-10 15:38:39'),
+(2, 'top_rated', 'Mais bem avaliados', '2026-11-10 15:38:39');
 
 -- --------------------------------------------------------
 
@@ -108,7 +116,7 @@ ALTER TABLE `filmes_catalogos`
 -- AUTO_INCREMENT de tabela `catalogos`
 --
 ALTER TABLE `catalogos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `filmes`

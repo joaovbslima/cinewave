@@ -72,7 +72,8 @@ require_once 'includes/header.php';
                 </div>
             </div>
         </main>
-<script src="assets/js/script.js"></script>
+<script src="assets/js/componentes.js"></script>
+<script src="assets/js/home.js"></script>
 
 <?php
 require_once 'includes/footer.php';
