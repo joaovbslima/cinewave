@@ -7,8 +7,6 @@ require_once 'database.php';
 
 $filmesCineWave = [];
 
-header('Content-Type: application/json; charset=utf-8');
-
 try {
     $pdo = conectarBanco($config);
     $sql = "SELECT
@@ -17,6 +15,7 @@ try {
                 f.sinopse,
                 f.data_lancamento AS lancamento,
                 f.nota,
+                f.quantidade_votos,
                 f.duracao_minutos,
                 f.classificacao_indicativa,
                 f.generos,
@@ -56,6 +55,7 @@ try {
             'lancamento' => $filme['lancamento'] ?? null,
             'duracao' => $filme['duracao_minutos'] ?? null,
             'nota' => $filme['nota'],
+            'quantidade_votos' => $filme['quantidade_votos'],
             'classificacao_indicativa' => $filme['classificacao_indicativa'],
             'generos' => $generos,
             'poster' => $filme['poster_path'] !== null ? $baseImagem . $filme['poster_path'] : null,

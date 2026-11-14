@@ -26,7 +26,7 @@
             <nav class="menu">
                 <a class="item-menu" href="index.php" <?php echo $paginaAtual === 'inicio' ? 'aria-current="page"' : '' ?> >Início</a>
                 <a class="item-menu" href="filmes.php" <?php echo $paginaAtual === 'filmes' ? 'aria-current="page"' : '' ?> >Filmes</a>
-                <a class="item-menu" href="series.php" <?php echo $paginaAtual === 'series' ? 'aria-current="page"' : '' ?> >Séries</a>
+                <!-- <a class="item-menu" href="series.php" <?php echo $paginaAtual === 'series' ? 'aria-current="page"' : '' ?> >Séries</a> -->
                 <a class="item-menu" href="lancamentos.php" <?php echo $paginaAtual === 'lancamentos' ? 'aria-current="page"' : '' ?> >Lançamentos</a>
                 <!-- <a class="item-menu" href="minha-lista.html">Minha lista</a> -->
             </nav>
@@ -40,6 +40,6 @@
                     />
                 </div>
 
-                <a id="link-login" href="login.html">Login</a>
+                <!-- <a id="link-login" href="">Login</a> -->
             </div>
         </header>

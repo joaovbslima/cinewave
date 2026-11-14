@@ -13,7 +13,7 @@ const quantidadeVotosModal = document.querySelector('#qtd-votos-modal');
 const botaoTrailerModal = document.querySelector('.botao-modal');
 
 
-function formatarHora(tempoEmMinutos) {
+function horaFormatada(tempoEmMinutos) {
   const horas = Math.floor(tempoEmMinutos / 60);
   const minutos = tempoEmMinutos % 60;
 
@@ -31,7 +31,7 @@ function abrirModalDetalhes(filme) {
     }
 
 
-    if (filme.generos.length > 0) {
+    if (filme.sinopse) {
         sinopseModal.textContent = filme.sinopse;
     } else {
         sinopseModal.textContent = 'Sinopse não disponível.';
@@ -53,7 +53,7 @@ function abrirModalDetalhes(filme) {
     }
 
     if (filme.duracao) {
-        duracaoModal.textContent = formatarHora(filme.duracao);
+        duracaoModal.textContent = horaFormatada(filme.duracao);
     } else {
         duracaoModal.textContent = 'Duração não informada';
     }

@@ -124,7 +124,6 @@ cinewave/
 │   ├── database.php
 │   ├── filmes.php
 │   ├── lancamentos.php
-│   ├── populares.php
 │   ├── sincronizar-filmes.php
 │   ├── tmdb.php
 │   └── top-rated.php
@@ -137,7 +136,7 @@ cinewave/
 │       ├── filmes.js
 │       ├── home.js
 │       ├── lancamentos.js
-│       ├── modal.js
+│       ├── modal-detalhes.js
 │       └── servicos-api.js
 ├── database/
 │   └── cinewave.sql
@@ -150,7 +149,6 @@ cinewave/
 ├── filmes.php
 ├── index.php
 ├── lancamentos.php
-├── minha-lista.php
 ├── series.php
 ├── .gitignore
 └── README.md

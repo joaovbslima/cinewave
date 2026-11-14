@@ -74,11 +74,11 @@ function criarSlideshow(listaEstreias) {
     botaoSlidePrimario.textContent = 'Assistir trailer';
     acoesSlide.appendChild(botaoSlidePrimario);
 
-    const botaoSlideSecundario = document.createElement('a');
-    botaoSlideSecundario.classList.add('botao-slide');
-    botaoSlideSecundario.classList.add('botao-secundario');
-    botaoSlideSecundario.textContent = '+ Minha lista';
-    acoesSlide.appendChild(botaoSlideSecundario)
+    // const botaoSlideSecundario = document.createElement('a');
+    // botaoSlideSecundario.classList.add('botao-slide');
+    // botaoSlideSecundario.classList.add('botao-secundario');
+    // botaoSlideSecundario.textContent = '+ Minha lista';
+    // acoesSlide.appendChild(botaoSlideSecundario)
 
   });
 }

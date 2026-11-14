@@ -37,26 +37,6 @@ function buscarTMDB($url, $token) {
 
 }
 
-function buscarMapaGeneros($tipo, $token) {
-    $urlGeneros = "https://api.themoviedb.org/3/genre/$tipo/list?language=pt-BR";
-
-    $dadosGeneros = buscarTMDB($urlGeneros, $token);
-
-    $mapaGeneros = [];
-
-    foreach ($dadosGeneros['genres'] as $genero) {
-        $mapaGeneros[$genero['id']] = $genero['name'];
-
-    }
-
-    return $mapaGeneros;
-
-}
-
-
-
-
-
 
 
 ?>
