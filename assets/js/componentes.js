@@ -6,7 +6,7 @@ function criarCards(listaDeFilmes, container, limite) {
     listaCards.forEach(filme => {
     // Criação de cada card utilizando DOM
     const divCol = document.createElement('div');
-    divCol.classList.add('col-fr-1');
+    divCol.classList.add('col-fr-1', 'card-clicavel');
     container.appendChild(divCol);
 
     const divPoster = document.createElement('div');
@@ -36,6 +36,10 @@ function criarCards(listaDeFilmes, container, limite) {
     pGeneros.textContent = filme.generos.join(' • ');
 
     divCol.append(tituloH3, pGeneros);
+
+    divCol.addEventListener('click', () => {
+    abrirModalDetalhes(filme);
+    });
 
     // ----------------
 

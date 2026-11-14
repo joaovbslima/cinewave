@@ -5,13 +5,14 @@ function formatarHora(tempoEmMinutos) {
   return `${horas}h ${minutos}min`;
 }
 
+
 // criação do código HTML do slideshow
 function criarSlideshow(listaEstreias) {
 
   // Criação do hero/slideshow de forma dinâmica
   const slideshow = document.querySelector('.slideshow');
   // criação de cada item do slideshow
-  listaEstreias.slice(1, 4).forEach(filme => {
+  listaEstreias.slice(0, 3).forEach(filme => {
     const slideshowItem = document.createElement('div');
     slideshowItem.classList.add('slideshow-item');
     slideshow.appendChild(slideshowItem);

@@ -18,6 +18,12 @@ require_once 'includes/header.php';
     </div>
 </main>
 
+<?php
+require_once 'includes/modal-detalhes.php';
+
+?>
+
+<script src="assets/js/modal-detalhes.js"></script>
 <script src="assets/js/componentes.js"></script>
 <script src="assets/js/servicos-api.js"></script>
 <script src="assets/js/filmes.js"></script>
