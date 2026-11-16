@@ -23,10 +23,12 @@ require_once 'includes/modal-detalhes.php';
 
 ?>
 
+<script src="assets/js/servicos-api.js"></script>
 <script src="assets/js/modal-detalhes.js"></script>
 <script src="assets/js/componentes.js"></script>
-<script src="assets/js/servicos-api.js"></script>
+<script src="assets/js/busca.js"></script>
 <script src="assets/js/lancamentos.js"></script>
+
 <?php
 require_once 'includes/footer.php';
 

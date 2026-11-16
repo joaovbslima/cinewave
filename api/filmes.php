@@ -12,6 +12,7 @@ try {
     $sql = "SELECT
                 f.tmdb_id,
                 f.titulo,
+                f.titulo_original,
                 f.sinopse,
                 f.data_lancamento AS lancamento,
                 f.nota,
@@ -58,6 +59,7 @@ try {
         $filmeCineWave = [
             'tmdb_id' => $filme['tmdb_id'],
             'titulo' => $filme['titulo'],
+            'titulo_original' => $filme['titulo_original'],
             'sinopse' => $filme['sinopse'],
             'lancamento' => $filme['lancamento'] ?? null,
             'duracao' => $filme['duracao_minutos'] ?? null,

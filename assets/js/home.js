@@ -66,14 +66,25 @@ function criarSlideshow(listaEstreias) {
     acoesSlide.classList.add('acoes-slideshow');
     textoSlideshow.appendChild(acoesSlide);
 
+    if (filme.trailer) {
     const botaoSlidePrimario = document.createElement('a');
-    botaoSlidePrimario.classList.add('botao-slide');
-    botaoSlidePrimario.classList.add('botao-primario');
-    botaoSlidePrimario.setAttribute('href', filme.trailer);
-    botaoSlidePrimario.setAttribute('target', "_blank");
-    botaoSlidePrimario.textContent = 'Assistir trailer';
-    acoesSlide.appendChild(botaoSlidePrimario);
 
+    botaoSlidePrimario.classList.add(
+        'botao-slide',
+        'botao-primario'
+    );
+
+    botaoSlidePrimario.setAttribute('href', filme.trailer);
+    botaoSlidePrimario.setAttribute('target', '_blank');
+    botaoSlidePrimario.setAttribute(
+        'rel',
+        'noopener noreferrer'
+    );
+
+    botaoSlidePrimario.textContent = 'Assistir trailer';
+
+    acoesSlide.appendChild(botaoSlidePrimario);
+}
     // const botaoSlideSecundario = document.createElement('a');
     // botaoSlideSecundario.classList.add('botao-slide');
     // botaoSlideSecundario.classList.add('botao-secundario');

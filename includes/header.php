@@ -31,13 +31,23 @@
                 <!-- <a class="item-menu" href="minha-lista.html">Minha lista</a> -->
             </nav>
             <div class="actions">
-                <div class="busca">
+                <div class="busca" id="area-busca">
                     <input
                         id="pesquisa"
                         type="search"
-                        placeholder="Buscar Título"
-                        aria-label="Buscar filmes e séries"
-                    />
+                        placeholder="Buscar filme"
+                        aria-label="Buscar filmes"
+                        aria-controls="resultados-busca"
+                        autocomplete="off"
+                    >
+
+                    <ul
+                        id="resultados-busca"
+                        class="resultados-busca"
+                        aria-label="Resultados da busca"
+                        aria-live="polite"
+                        hidden
+                    ></ul>
                 </div>
 
                 <!-- <a id="link-login" href="">Login</a> -->
